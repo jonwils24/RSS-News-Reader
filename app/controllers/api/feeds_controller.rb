@@ -17,6 +17,12 @@ class Api::FeedsController < ApplicationController
       render :json => { error: "invalid url" }, status: :unprocessable_entity
     end
   end
+  
+  def destroy
+    feed = Feed.find(params[:id])
+    feed.destroy
+    render :json => Feed.all
+  end
 
   private
 
